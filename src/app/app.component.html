@@ -1,2 +1,11 @@
-<app-registration>
-</app-registration>
+<div class="container-fluid g-0">
+    <app-navbar (sideNavToogled)="sideNavStatus=$event;">
+    </app-navbar>
+    <main>
+   <app-registration-edit [sideNavStatus]="sideNavStatus"[ngClass]="{'app-registration-edit-open':sideNavStatus}"></app-registration-edit>
+   <div class="display-area">
+    <p class="fs-1 fw-bold fst-italic"></p>
+   </div>
+</main>
+</div>
+<router-outlet></router-outlet>

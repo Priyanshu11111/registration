@@ -1,1 +1,1 @@
-resolve.fallback: { "crypto": false }
+'resolve.fallback: { "crypto": require.resolve("crypto-browserify") }'

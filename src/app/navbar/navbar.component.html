@@ -1,0 +1,20 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark px-2">
+    <div class="side-nav-button p-2 me-3 text-light" (click)="SideNavToogle()">
+        <i class="fa-solid fa-bars"></i>
+    </div>
+    <a class="navbar-brand px-4" href="#">Management System</a>
+    <div class="navbar-collapse">
+      <ul class="navbar-nav me-auto">
+        <li class="nav item dropdown">
+          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" routerLinkActive="active">
+            Customers
+          </a> 
+          <ul class="dropdown-menu dropdown-menu-dark">
+            <li><a class="dropdown-item" routerLinkActive="active"routerLink="addcustomers">Add Customers</a></li> 
+            <li><a class="dropdown-item" routerLinkActive="active"routerLink="showcustomers">Show Customers</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+</nav>
+<router-outlet></router-outlet>

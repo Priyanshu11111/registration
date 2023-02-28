@@ -1,21 +1,29 @@
 .content{
     max-width: 500px;
     margin: auto;
-    background-color: #fff;
     padding: 2% 2%; 
-} 
+}
+input.ng-invalid{
+    border-left: 5px solid red;
+}
+input.ng-valid{
+    border-left: 5px solid green;
+}
 button
 {
-background-color: aqua;
+background-color: white;
 color: black;
 text-align: center;
 }
 button:hover
 {
     background-color: aqua;
-    color: red;
+    color: black;
 }
 .error
 {
     color: red;
+}
+*{    
+ font-family: 'Shantell Sans', cursive;
 }
