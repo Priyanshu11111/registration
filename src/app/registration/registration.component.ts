@@ -28,18 +28,15 @@
         "password":new FormControl(null,[Validators.required,Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}$')]),
         "password_confirmation":new FormControl(null,[Validators.required]),
       });
-
         this.router.params.subscribe((params)=>{
             this.editUser(params["id"],[])
         })
         }
       submitData()
-      {
+      {/* 
         const hashedPassword = hashSync(this.registerForm.value.password, 10);
-        const formData = {
-          ...this.registerForm.value,
-          password: hashedPassword,
-          password_confirmation: hashedPassword
+  */       const formData = {
+          ...this.registerForm.value, 
         }
         const id = this.customers_data ? this.customers_data.customer.id : null;
         if (id) {

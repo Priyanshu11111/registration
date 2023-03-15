@@ -1,20 +1,40 @@
 <nav class="navbar navbar-expand navbar-dark bg-dark px-2">
-    <div class="side-nav-button p-2 me-3 text-light" (click)="SideNavToogle()">
-        <i class="fa-solid fa-bars"></i>
-    </div>
     <a class="navbar-brand px-4" href="#">Management System</a>
     <div class="navbar-collapse">
       <ul class="navbar-nav me-auto">
         <li class="nav item dropdown">
-          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" routerLinkActive="active">
-            Customers
+          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">
+          Employee
           </a> 
           <ul class="dropdown-menu dropdown-menu-dark">
-            <li><a class="dropdown-item" routerLinkActive="active"routerLink="addcustomers">Add Customers</a></li> 
-            <li><a class="dropdown-item" routerLinkActive="active"routerLink="showcustomers">Show Customers</a></li>
+            <li><a *ngIf="getUserRole() === '1'" class="dropdown-item" routerLinkActive="active"routerLink="./addemployee">Add Employee</a></li> 
+            <li><a class="dropdown-item" routerLinkActive="active"routerLink="./showemployee">Show Employee</a></li>
           </ul>
         </li>
       </ul>
     </div>
+    <li class="nav item dropdown">
+      <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">
+      Employee
+      </a> 
+      <ul class="dropdown-menu dropdown-menu-dark">
+        <li><a class="dropdown-item" routerLinkActive="active" (click)="logout()">Logout</a></li> 
+        <li><a *ngIf="getUserRole() === '1'" class="dropdown-item"class="dropdown-item" routerLinkActive="active"routerLink="../users">Swith To User</a></li>
+      </ul>
+    </li>
 </nav>
+<!-- <div class="card" style="margin: 20px;">
+  <div class="card-header">Add Asset
+  </div>
+  <div class="card-body">
+      <form [formGroup]="assetForm" enctype="multipart/form-data" (ngSubmit)="submitAsset()">
+        <label>Name</label>
+        <input type="text" id="name" class="form-control" formControlName="name">
+        <label>Product-Name</label>g
+        <input type="text" id="mobile" class="form-control"formControlName="product-name">
+        <input class="form-control" name="photo" type="file" id="photo" formControlName="image">
+        <input type="submit" value="Save" class="btn btn-success">
+    </form>
+  </div>
+</div> -->
 <router-outlet></router-outlet>

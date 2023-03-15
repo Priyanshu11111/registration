@@ -1,0 +1,18 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark px-2">
+    <a class="navbar-brand px-4" href="#">Management System</a>
+    <div class="navbar-collapse">
+      <ul class="navbar-nav me-auto">
+        <li class="nav item dropdown">
+          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">
+          Employee
+          </a> 
+          <ul class="dropdown-menu dropdown-menu-dark">
+            <li><a class="dropdown-item" routerLinkActive="active"routerLink="../showemployee">Show Employee</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    
+    <button type="button" class="btn btn-danger" (click)="logout()">Logout</button><!--  -->
+</nav>
+<router-outlet></router-outlet>

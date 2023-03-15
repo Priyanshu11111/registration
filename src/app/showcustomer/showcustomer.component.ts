@@ -17,25 +17,29 @@ customers_data:any;
 a:any;
 ngOnInit():void{
   this.api.apiCall().subscribe((data)=>{
-    this.customers = data;
+    this.customers= data;
   })
 }
 editUser(id:number,data:any){
   this.api.editUser(id,data).subscribe((data: any) => {
     this.customers_data= data;
-/*     console.log(this.user_data.customer); */
-   /*  this.registerForm.patchValue({
-      firstname:this.user_data.customer.firstname,
-      lastname:this.user_data.customer.lastname,
-      email:this.user_data.customer.email,
+    console.log(this.customers_data.customer);
+ /*    this.registerForm.patchValue({
+      firstname:this.customers_data.customer.firstname,
+      lastname:this.customers_data.customer.lastname,
+      email:this.customers_data.customer.email,
     }) */
   });
-  this.router.navigate(['showcustomers/edit',id])
+  this.router.navigate(['admin/showemployee/edit',id])
 }
 deleteUser(id: number) {
   if (confirm("Are you sure you want to delete this user?")) {
     this.api.deleteUser(id).subscribe((data:any) => {
+      this.customers = this.customers.filter((customer: any) => customer.id !== id);
     });
   }
+}
+getUserRole() {
+  return localStorage.getItem('userRole');
 }
 }
