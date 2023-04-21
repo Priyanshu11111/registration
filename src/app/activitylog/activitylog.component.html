@@ -1,0 +1,25 @@
+<div class="content-controls">
+<button (click)="exportToExcel()" class="btn btn-primary ">Export to Excel</button>
+</div>
+<div class="table-wrapper">
+    <table class="fl-table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Email</th>
+            <th>Modifiy User</th>
+            <th>Created_at</th>
+            <th>Updated_at</th>
+        </tr>
+        <tr *ngFor="let user of users|paginate:{itemsPerPage:15,currentPage:a}">
+            <td scope="row">{{user.id}}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.modifyuser }}</td>
+            <td>{{ user.created_at|date:'yyyy-MM-dd HH:mm:ss'}}</td>
+            <td>{{ user.updated_at|date:'yyyy-MM-dd HH:mm:ss'}}</td>
+        </thead>
+        <tbody>
+        <tbody>
+    </table>
+        <pagination-controls (pageChange)="a=$event" class=""></pagination-controls>
+</div>

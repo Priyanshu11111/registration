@@ -5,16 +5,16 @@
             <th scope="col">Firstname</th>
             <th scope="col">Lastname</th>
             <th scope="col">Email</th>
-            <th *ngIf="getUserRole() === '1'"scope="col">Actions</th>
+            <th *ngIf="getUserRole() === 'admin'"scope="col">Actions</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let user of customers|paginate:{itemsPerPage:10,currentPage:a}">
+          <tr *ngFor="let user of customers|paginate:{itemsPerPage:15,currentPage:a}">
             <td scope="row">{{user.id}}</td>
             <td>{{ user.firstname }}</td>
             <td>{{ user.lastname }}</td>
             <td>{{ user.email }}</td>
-            <td *ngIf="getUserRole() === '1'">
+            <td *ngIf="getUserRole() === 'admin'">
                 <button  (click)="deleteUser(user.id)">Delete</button>
                 <button (click)="editUser(user.id,user)">Edit</button></td>
           </tr>     

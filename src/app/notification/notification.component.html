@@ -1,0 +1,18 @@
+<div class="content-controls">
+</div>
+<div class="table-wrapper">
+    <table class="fl-table">
+        <thead>
+        <tr>
+            <th>Notification</th>
+            <th>Read_at</th>
+        </tr>
+        <tr *ngFor="let user of notification">
+            <td>{{ user.data }}</td>
+            <td>{{user.read_at|date:'yyyy-MM-dd HH:mm:ss'}}</td>
+        </thead>
+        <tbody>
+        <tbody>
+    </table>
+       <!--  <pagination-controls (pageChange)="a=$event" class=""></pagination-controls> -->
+</div>

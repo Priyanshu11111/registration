@@ -3,25 +3,62 @@
     <div class="navbar-collapse">
       <ul class="navbar-nav me-auto">
         <li class="nav item dropdown">
-          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">
+          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"> <i class="fa-solid fa-user"></i>
           Employee
           </a> 
           <ul class="dropdown-menu dropdown-menu-dark">
-            <li><a *ngIf="getUserRole() === '1'" class="dropdown-item" routerLinkActive="active"routerLink="./addemployee">Add Employee</a></li> 
-            <li><a class="dropdown-item" routerLinkActive="active"routerLink="./showemployee">Show Employee</a></li>
+            <li><a class="dropdown-item" routerLink="./addemployee"><i class="fa-sharp fa-regular fa-plus"></i> Add Employee</a></li> 
+            <li><a class="dropdown-item"class="dropdown-item" routerLink="../types"><i class="fa-solid fa-file"></i> Create Types</a></li>
+            <li><a class="dropdown-item"class="dropdown-item" routerLink="../supplier"><i class="fa-solid fa-users"></i> Create Supplier</a></li>
+            <li><a class="dropdown-item"class="dropdown-item" routerLink="../models"><i class="fa-solid fa-circle-down"></i> Create Models</a></li>
+          </ul>
+        </li>
+      <ul class="navbar-nav me-auto">
+        <li class="nav item dropdown">
+          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"> <i class="fa-solid fa-bars-staggered"></i>
+          Dashbord
+          </a> 
+          <ul class="dropdown-menu dropdown-menu-dark">
+            <li><a class="dropdown-item" routerLink="./admindashbord"><i class="fa-solid fa-address-book"></i> Show Employee</a></li>
+            <li><a class="dropdown-item"class="dropdown-item" routerLink="../usersdashboard"><i class="fa-solid fa-bars-staggered"></i> Switch To Userdashbord</a></li>
+            <li><a class="dropdown-item"class="dropdown-item" routerLink="../typeslist"><i class="fa-solid fa-list-ul"></i> Types List </a></li>
+            <li><a class="dropdown-item"class="dropdown-item" routerLink="../showmodels"> <i class="fa-solid fa-circle-info"></i> Show Models</a></li>
+            <li><a class="dropdown" class="dropdown-item" routerLink="../request"> <i class="fas fa-file-signature"></i> Request List</a></li>
+            <li><a class="dropdown-item"class="dropdown-item" routerLink="../supplierlist"><i class="fa-solid fa-user-check"></i> Supplier list </a></li>
+            <li><a class="dropdown-item"class="dropdown-item" routerLink="../activitylog"><i class="fa-solid fa-chart-line"></i> Activity Log </a></li>
           </ul>
         </li>
       </ul>
+    </ul>
+        <li class="nav item dropdown">
+          <a class="nav-link dropdown-toggle" role="button" class="notification" data-bs-toggle="dropdown">
+            <i class="fa-sharp fa-solid fa-bell" ></i>
+            <span class="badge badge-pill badge-danger" > {{ unreadCount }}</span>
+          </a> 
+          <ul class="dropdown-menu dropdown-menu-dark">
+            <li class="let" *ngFor="let user of notification">
+              <a class="dropdown-item">{{ user.data }} <i class="fa-sharp fa-solid fa-check" (click)="markAsread(user.id)" ></i></a>
+              <li class="dropdown-menu-center">
+                <a class="dropdown-item view-all" routerLink="./notification">View All</a>
+              </li>
+            </ul>
+        </li>
+      <div>
+      <div class="navbar-collapse">
+        <ul class="navbar-nav mp-auto">
+          <li class="nav item dropdown">
+            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">
+              <i class="fa-solid fa-gear"></i>
+              Settings
+            </a> 
+            <ul class="dropdown-menu dropdown-menu-dark">
+              <li><a class="dropdown-item" (click)="logout()" > <i class="fa-solid fa-right-from-bracket"></i> Log Out</a></li>
+            </ul>
+          </li>
+          </ul>
+          </div>
+      </div>
     </div>
-    <li class="nav item dropdown">
-      <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">
-      Employee
-      </a> 
-      <ul class="dropdown-menu dropdown-menu-dark">
-        <li><a class="dropdown-item" routerLinkActive="active" (click)="logout()">Logout</a></li> 
-        <li><a *ngIf="getUserRole() === '1'" class="dropdown-item"class="dropdown-item" routerLinkActive="active"routerLink="../users">Swith To User</a></li>
-      </ul>
-    </li>
 </nav>
 <!-- <div class="card" style="margin: 20px;">
   <div class="card-header">Add Asset
@@ -30,7 +67,7 @@
       <form [formGroup]="assetForm" enctype="multipart/form-data" (ngSubmit)="submitAsset()">
         <label>Name</label>
         <input type="text" id="name" class="form-control" formControlName="name">
-        <label>Product-Name</label>g
+        <label>Product-Name</label>
         <input type="text" id="mobile" class="form-control"formControlName="product-name">
         <input class="form-control" name="photo" type="file" id="photo" formControlName="image">
         <input type="submit" value="Save" class="btn btn-success">
@@ -38,3 +75,4 @@
   </div>
 </div> -->
 <router-outlet></router-outlet>
+  

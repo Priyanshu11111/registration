@@ -4,13 +4,36 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { ReactiveFormsModule,FormsModule}from'@angular/forms';
-import {HttpClientModule}from '@angular/common/http';
+import {HttpClientModule,HTTP_INTERCEPTORS}from '@angular/common/http';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ShowcustomerComponent } from './showcustomer/showcustomer.component';
 import { LoginComponent } from './login/login.component';
 import{NgxPaginationModule}from 'ngx-pagination'
+import { Subscription } from 'rxjs';
+
 import { AdminRoutingModule } from './navbar/admin/admin-routing.module';
 import { UserComponent } from './user/user.component';
+import { UserdashbordComponent } from './userdashbord/userdashbord.component';
+import { ProfileComponent } from './profile/profile.component';
+import { ActivitylogComponent } from './activitylog/activitylog.component';
+import { NotificationComponent } from './notification/notification.component';
+import{LoginInterceptor}from'./login.interceptor';
+import { TypesComponent } from './types/types.component';
+import { TypeslistComponent } from './typeslist/typeslist.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { SupplierComponent } from './supplier/supplier.component';
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { SupplierlistComponent } from './supplierlist/supplierlist.component';
+import { ModelsComponent } from './models/models.component';
+import { ShowmodelsComponent } from './showmodels/showmodels.component';
+import { ShowallnotificationComponent } from './showallnotification/showallnotification.component';
+import { RequestComponent } from './request/request.component';
+import { RequestlistComponent } from './requestlist/requestlist.component';
+import { ShowrequestsComponent } from './showrequests/showrequests.component';
+import { ViewtypesComponent } from './viewtypes/viewtypes.component';
+import { ViewmodelsComponent } from './viewmodels/viewmodels.component';
+import { ViewsuppliersComponent } from './viewsuppliers/viewsuppliers.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,17 +42,43 @@ import { UserComponent } from './user/user.component';
     ShowcustomerComponent,
     LoginComponent,
     UserComponent,
+    UserdashbordComponent,
+    ProfileComponent,
+    ActivitylogComponent,
+    NotificationComponent,
+    TypesComponent,
+    TypeslistComponent,
+    SupplierComponent,
+    SupplierlistComponent,
+    ModelsComponent,
+    ShowmodelsComponent,
+    ShowallnotificationComponent,
+    RequestComponent,
+    RequestlistComponent,
+    ShowrequestsComponent,
+    ViewtypesComponent,
+    ViewmodelsComponent,
+    ViewsuppliersComponent,
   ],
   imports: [
+
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      positionClass: 'toast-top-right'}),
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
     NgxPaginationModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    HttpClientModule,
+    PerfectScrollbarModule
 ,  ],
-  providers: [ ],
+  providers: [
+    
+/*     { provide: HTTP_INTERCEPTORS, useClass: LoginInterceptor, multi: true }
+    */],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

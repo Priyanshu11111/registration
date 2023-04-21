@@ -1,3 +1,10 @@
+.navbar-nav mp-auto{
+    float: right;
+    justify-content: space-between;
+    align-items: left;
+    margin-right: 3rem;
+    overflow: auto;
+}
 a{
  font-family: 'Shantell Sans', cursive;
 }
@@ -11,7 +18,63 @@ nav{
     font-size: 1.5rem;
     cursor: pointer;
 }
+.notification{
+    color:white;
+    overflow: hidden;
+    margin-right: 0.5rem;
+    float: left;
+}
 .side-nav-button :hover{
     background-color: rgba(255,255,255,0.2);
     border-radius: 30%;
 }
+.let{
+    margin-left: 2rem;
+}
+.dropdown-menu-center {
+  text-align: center;
+}
+.fa-bell{
+    padding-right: 0.5rem;
+    padding-top: 0.10rem;
+}
+.badge-danger 
+{
+    background-color: red;
+}
+    
+.dropdown-menu-dark.show {
+        left: auto;
+        overflow: hidden;
+        right: 0;
+    }
+.view-all {
+  display: inline-block;
+  overflow: hidden;
+  margin-top: 10px;
+}
+.notification .dropdown-menu-dark .let a {
+    max-width: 200px; /* adjust the value as needed */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  @media only screen and (max-width:375px ) {
+    .navbar-nav mp-auto{
+        float: none;
+        justify-content: center;
+        margin-right: 0;
+    }
+    .let{
+        margin-left: 0;
+    }
+    .notification {
+        margin-right: 0;
+        float: right;
+    }
+    .side-nav-button {
+        font-size: 1.2rem;
+    }
+}
+
+

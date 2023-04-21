@@ -40,7 +40,7 @@
         }
         const id = this.customers_data ? this.customers_data.customer.id : null;
         if (id) {
-          const emailExists = this.customers.some((user: any) => user.nemail === this.registerForm.value.email && user.id !== id);
+        const emailExists = this.customers.some((customer: any) =>customer.email === this.registerForm.value.email && customer.id !== id);
          if (emailExists) {
             alert('This email already exists in the database. Please use a different email.');
             return;
@@ -59,7 +59,6 @@
             return;
           }
           this.api.submitData(formData).subscribe(data => {
-            console.log(data);
           });
           alert(`New user has been created`);
         }
@@ -70,6 +69,7 @@
         if(this.registerForm.valid){
           alert(`Thank You ${this.registerForm.value.firstname}`);
         }
+        this.registerForm.reset();
       }
       editUser(id:number,data:any){
         this.api.editUser(id,data).subscribe((data: any) => {

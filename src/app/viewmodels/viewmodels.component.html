@@ -1,0 +1,18 @@
+<div class="form-style-2">
+    <div class="form-style-2-heading">Show Models</div>
+    <form [formGroup]="viewmodel">
+    <label for="types"><span>Type <span class="required">*</span></span></label>
+    <label>{{ viewmodel.controls['types'].value }}</label>
+
+    <label for="model"><span>Supplier <span class="required">*</span></span></label>    
+    <label>{{ viewmodel.controls['supplier'].value }}</label>
+  
+    <label for="name"><span>Name <span class="required">*</span></span></label>
+    <label>{{ viewmodel.controls['name'].value }}</label>
+    
+    <label for="name"><span>Alias <span class="required">*</span></span></label>
+    <label>{{ viewmodel.controls['alias'].value }}</label>
+
+ </form>
+  </div>
+  

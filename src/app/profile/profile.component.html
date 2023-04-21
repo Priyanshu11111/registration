@@ -1,0 +1,39 @@
+<div class="card" style="margin: 20px;">
+  <div class="card-header">Change Profile
+  </div>
+  <div class="card-body">
+      <form [formGroup]="profileForm" (ngSubmit)="submitProfile()">
+        <label>Firstname</label>
+        <input type="text" id="name" class="form-control" formControlName="firstname">
+        <div *ngIf="firstName.invalid && (firstName.touched||firstName.dirty)">
+          <span class="error" *ngIf="firstName.errors?.required">First name is required</span>
+          <span class="error" *ngIf="firstName.errors?.pattern">Enter Only Characters</span>
+      </div>
+        <label>Lastname</label>
+        <input type="text" id="name" class="form-control" formControlName="lastname">
+        <div *ngIf="lastName.invalid && (lastName.touched||lastName.dirty)">
+          <span class="error" *ngIf="lastName.errors?.required">Lastname is required</span>
+          <span class="error" *ngIf="lastName.errors?.pattern">Enter Only Characters</span>
+      </div>
+      <label>E-Mail</label>
+        <input type="text" id="name" class="form-control" formControlName="email" readonly (click)="showError = true">
+        <p class="error" *ngIf="showError">This email cannot be changed.</p>
+    <!--     <div *ngIf="emailid.touched">
+          <span class="error" *ngIf="emailid.errors.readonly">Email cannot be changed.</span>
+        </div> -->
+        <label>Password</label>
+        <input type="password" id="mobile" class="form-control"formControlName="password">
+        <div *ngIf="passWord.invalid && (passWord.touched||passWord.dirty)">
+          <span class="error" *ngIf="passWord.errors?.required">Password is required</span>
+          <span class="error" *ngIf="passWord.errors?.pattern">Password must contain more than 8 characters, 1 numeric, 1 upper case letter, and 1 special character($@$!%*?&).</span>
+      </div>
+        <label>Confirm Password</label>
+        <input type="password" id="mobile" class="form-control"formControlName="password_confirmation">
+        <div *ngIf="confirmpassword.invalid && (confirmpassword.touched||confirmpassword.dirty)">
+          <span class="error" *ngIf="confirmpassword.errors?.required">Confirm Password is required</span>
+          <span class="error" *ngIf="confirmpassword.valid">The entered Password not match</span>
+      </div>
+        <input type="submit" value="Submit" [disabled]="profileForm.invalid" class="btn btn-success">
+    </form>
+  </div>
+</div>

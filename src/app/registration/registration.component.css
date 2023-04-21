@@ -3,6 +3,9 @@
     margin: auto;
     padding: 2% 2%; 
 }
+body{
+    background-color:rgb(red, green, blue)
+}
 input.ng-invalid{
     border-left: 5px solid red;
 }

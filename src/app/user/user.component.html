@@ -1,18 +1,47 @@
 <nav class="navbar navbar-expand navbar-dark bg-dark px-2">
-    <a class="navbar-brand px-4" href="#">Management System</a>
+    <a class="navbar-brand px-4" href="">Management System</a>
     <div class="navbar-collapse">
       <ul class="navbar-nav me-auto">
         <li class="nav item dropdown">
           <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">
-          Employee
+            <i class="fa-solid fa-user"></i> Employee
           </a> 
           <ul class="dropdown-menu dropdown-menu-dark">
-            <li><a class="dropdown-item" routerLinkActive="active"routerLink="../showemployee">Show Employee</a></li>
+            <li><a class="dropdown-item" routerLink="./request"> <i class="fa-solid fa-bars-staggered"></i> Request </a></li>
+            <li><a class="dropdown-item" routerLink="./usersdashboard"> <i class="fa-solid fa-bars-staggered"></i> User Dashbord</a></li>
+            <li><a class="dropdown-item" routerLink="./requestlist"> <i class="fas fa-file-signature"></i> Request List </a></li>
           </ul>
         </li>
       </ul>
+        <li class="nav item dropdown">
+          <a class="nav-link dropdown-toggle" role="button" class="notification" data-bs-toggle="dropdown">
+            <i class="fa-sharp fa-solid fa-bell" ></i>
+            <span class="badge badge-pill badge-danger" > {{ unreadCount }}</span>
+          </a> 
+          <ul class="dropdown-menu dropdown-menu-dark">
+            <li class="let" *ngFor="let user of notification">
+              <a class="dropdown-item">{{ user.data }} <i class="fa-sharp fa-solid fa-check" *ngIf="!user.read_at"(click)="markAsread(user.id)" ></i></a>
+              <li class="dropdown-menu-center">
+                <a class="dropdown-item view-all" routerLink="./notification">View All</a>
+              </li>
+            </ul>
+        </li>
+      <div>
+      <div class="navbar-collapse">
+        <ul class="navbar-nav ml-auto"> 
+          <li class="nav item dropdown">  
+            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">
+              <i class="fa-solid fa-gear"></i>
+              Settings
+            </a> 
+            <ul class="dropdown-menu dropdown-menu-dark">
+              <li><a class="dropdown-item" (click)="logout()" > <i class="fa-solid fa-right-from-bracket"></i> Log Out</a></li>
+              <li><a class="dropdown-item" routerLink="./profile"> <i class="fa-solid fa-user"></i> Profile</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      </div>
     </div>
-    
-    <button type="button" class="btn btn-danger" (click)="logout()">Logout</button><!--  -->
 </nav>
 <router-outlet></router-outlet>

@@ -1,0 +1,16 @@
+<div class="form-style-2">
+  <div class="form-style-2-heading">Create Models</div>
+  <form [formGroup]="modelsForm" (ngSubmit)="modelsSubmit()">
+    <label for="types"><span>Types <span class="required">*</span></span></label>
+    <select class="input-field" name="types" formControlName="types">
+      <option *ngFor="let user of users" [value]="user.id">{{ user.name }}</option>
+    </select>
+    <label for="supplier"><span>Supplier <span class="required">*</span></span></label>
+    <select class="input-field" name="supplier" formControlName="supplier">
+      <option *ngFor="let supplier of suppliers" [value]="supplier.id">{{ supplier.name }}</option>
+    </select> 
+   <label for="name"><span>Name <span class="required">*</span></span><input type="text" class="input-field" name="name" value="" formControlName="name" /></label>
+    <label for="alias"><span>Alias <span class="required">*</span></span><input type="text" class="input-field" name="alias" value="" formControlName="alias" /></label>
+    <label><span> </span><input type="submit" [disabled]="modelsForm.invalid" value="Submit"/></label>
+  </form>
+</div>

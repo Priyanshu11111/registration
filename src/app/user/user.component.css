@@ -1,4 +1,56 @@
 *{    
     font-family: 'Shantell Sans', cursive;
-   }
-   
+}
+.navbar-nav ml-auto{
+    float: right;
+    justify-content: space-between;
+    align-items: left;
+    margin-right: 3rem;
+  }
+.notification{
+    color:white;
+    margin-right: 0.5rem;
+    float: left;
+}
+.fa-bell{
+padding-right: 0.5rem;
+padding-top: 0.10rem;
+}
+.badge-danger {
+  background-color: red;
+}
+
+.dropdown-menu-dark.show {
+    left: auto;
+  
+    right: 0;
+}
+/* <li class="nav item dropdown">
+<a class="nav-link dropdown-toggle" role="button" class="notification" data-bs-toggle="dropdown">
+  <i class="fa-sharp fa-solid fa-bell" ></i>
+  <span class="badge badge-pill badge-danger" > {{ unreadCount }}</span>
+</a> 
+<ul class="dropdown-menu dropdown-menu-dark" >
+  <tr *ngFor="let notification of notification|keyvalue">
+    <td>{{ notification.value}}</td>
+    <a  (click)="markAsread()"><i class="fa-sharp fa-solid fa-check"></i></a>
+  </ul>
+</li> */
+
+.let{
+    margin-left: 2rem;
+}
+.dropdown-menu-center {
+  text-align: center;
+}
+
+.view-all {
+  display: inline-block;
+  margin-top: 10px;
+}
+.notification .dropdown-menu-dark .let a {
+  max-width: 200px; /* adjust the value as needed */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

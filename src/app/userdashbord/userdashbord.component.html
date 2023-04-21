@@ -1,0 +1,26 @@
+  <div class="content-controls">
+  </div>
+  <div class="table-wrapper">
+      <table class="fl-table">
+          <thead>
+          <tr>
+              <th>ID</th>
+              <th>Firstname</th>
+              <th>Lastname</th>
+              <th>E-Mail</th>
+              <th>Created_at</th>
+              <th>Updated_at</th>
+          </tr>   
+          <tr *ngFor="let user of customers|paginate:{itemsPerPage:15,currentPage:a}">
+              <td scope="row" >{{ user.id }}</td>
+              <td>{{ user.firstname }}</td>
+              <td>{{ user.lastname }}</td>
+              <td>{{ user.email }}</td>
+              <td>{{ user.created_at|date:'yyyy-MM-dd HH:mm:ss'}}</td>
+              <td>{{ user.updated_at|date:'yyyy-MM-dd HH:mm:ss'}}</td>
+          </thead>
+          <tbody>
+          <tbody>
+          </table>
+            <pagination-controls (pageChange)="a=$event" class=""></pagination-controls>
+            </div>

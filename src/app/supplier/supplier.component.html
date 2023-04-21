@@ -1,0 +1,18 @@
+<div class="form-style-2">
+  <div class="form-style-2-heading">Create Supplier</div>
+  <form [formGroup]="supplierForm" (ngSubmit)="createSupplier()">
+    <div style="text-align: right">
+      <input type="button" (click)="addFields()" value="Add" class="orange-button" />
+    </div>
+    <label for="field1"><span>Name <span class="required">*</span></span><input type="text" class="input-field" name="field1" value="" formControlName="name" /></label>
+    <label for="field5"><span>Comment <span class="required">*</span></span><input name="field5" class="input-field" formControlName="comment"></label>
+    <label><span> </span><input type="submit" [disabled]="supplierForm.invalid" value="Submit" /></label>
+  </form>
+  <div *ngFor="let field of supplierForm.get('fields').controls; let i = index">
+    <form [formGroup]="field">
+     
+      <label for="supplier_name{{i}}"><span>Name <span class="required">*</span></span><input type="text" class="input-field" name="supplier_name{{i}}" value="" formControlName="supplier_name" /></label>
+      <label for="address{{i}}"><span>Address <span class="required">*</span></span><input type="text" class="input-field" name="address{{i}}" value="" formControlName="address" /></label>
+      <label for="number{{i}}"><span>Number <span class="required">*</span></span><input type="number" class="input-field" name="number{{i}}" value="" formControlName="number" /></label>
+    </form>
+  </div>

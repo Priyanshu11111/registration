@@ -9,13 +9,15 @@ const routes: Routes = [
   {path:'login',component:LoginComponent},
   {
     path:'admin',
-    canActivate:[AuthGuard],
     loadChildren:()=>import('./navbar/admin/admin.module').then((m)=>m.AdminModule),
+    canActivate:[AuthGuard],
+    data: { roles: ['admin'] } 
   },
   {
-    canActivate:[AuthGuard],
     path:'users',
     loadChildren:()=>import('./modules/user/user.module').then((m)=>m.UserModule),
+    canActivate:[AuthGuard],
+    data: { roles: ['user'] } 
   },
 ];
 

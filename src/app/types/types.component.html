@@ -1,0 +1,16 @@
+<div class="form-style-2">
+    <div class="form-style-2-heading">Create Types</div>
+    <form [formGroup]="typesForm" (ngSubmit)="createTypes()">
+    <label for="field1"><span>Name <span class="required">*</span></span><input type="text" class="input-field" name="field1" value="" formControlName="name"/>
+        <div *ngIf="Name.invalid && (Name.touched||Name.dirty)">
+            <span class="error" *ngIf="Name.errors?.required">Name is required</span>
+        </div>
+    </label>
+    <label for="field5"><span>Comment <span class="required">*</span></span><textarea name="field5" class="textarea-field" formControlName="comment">
+    </textarea>
+    <div *ngIf="Comment.invalid && (Comment.touched||Comment.dirty)">
+        <span class="error" *ngIf="Comment.errors?.required">Comment is required</span>
+    </div></label>
+    <label><span> </span><input type="submit"[disabled]="typesForm.invalid" value="Submit" /></label>
+    </form>
+    </div>

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-
+import Pusher from 'pusher-js';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,5 +7,5 @@ import { Component, Input } from '@angular/core';
 })
 export class AppComponent {
   title = 'registration';
-  sideNavStatus:boolean=false;
 }
+

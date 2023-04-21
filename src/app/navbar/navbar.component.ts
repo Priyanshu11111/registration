@@ -9,19 +9,40 @@ import{FormGroup,FormControl,Validators}from'@angular/forms';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-  constructor(private api:RegistrationService,private Router:Router){}
+  constructor(private api:RegistrationService,private router:Router){}
   logout():void {
-    this.api.logout();
+    this.api.logout().subscribe((data: any) => {
+    })
 }
+
 assetForm:any;
 currentUser: any;
 currentRole: string = '';
 asset:any;
+notification: any;
+unread:any;
+unreadCount:number=0;
 customerName: string='';
 ngOnInit():void{
-    this.api.assetCall().subscribe((data)=>{
+ /*    this.api.assetCall().subscribe((data)=>{
       this.asset = data;
-    })
+    }) */  this.api.getLatestNotification().subscribe((data: any) => {
+      this.notification = data.notifications;
+      this.unreadCount = data.unread_count;
+    });
+  }
+  markAsread(id:number){
+    this.api.markAsread(id).subscribe((data: any) => {
+      if (Notification.permission === 'granted') {
+        new Notification('Message Read successfully!', {
+          icon: '/assets/icons/check.png',
+          body: 'Your Message has Read successfully.'
+        });
+      }
+      this.unread=data;
+      this.unreadCount --;
+      this.notification = this.notification.filter((n: any) => n.id !== id);
+    });
     this.assetForm=new FormGroup({
       "name":new FormControl(null,[Validators.required,Validators.pattern('[a-zA-Z]*')]),
       "product-name":new FormControl(null,[Validators.required,Validators.pattern('[a-zA-Z]*')]),
@@ -47,11 +68,13 @@ get Image(){
   return this.assetForm.get('image');
 }
 getUserRole() {
-  return localStorage.getItem('userRole');
+  return localStorage.getItem('role');
 }
-/* switchRole() {
-  this.api.setUserRole(this.currentRole === 'admin' ? 'user' : 'admin');
-  this.currentRole = this.api.getUserRole();
-  this.router.navigate([this.currentRole === 'admin' ? 'admin' : 'users']);
-} */
+switchRole() {
+  const currentRole = this.api.getUserRole();
+  if (currentRole === 'admin') {
+    this.api.setUserRole('users');
+    this.router.navigate(['users']);
+  }
+}
 }

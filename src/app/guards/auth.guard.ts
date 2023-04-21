@@ -10,11 +10,17 @@ export class AuthGuard implements CanActivate {
   constructor(private api:RegistrationService,private router:Router){}
   canActivate(
     route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): boolean{
+    state: RouterStateSnapshot): boolean|UrlTree{
+      const userRole = this.api.getUserRole();
+      
       if(!this.api.IsloggedIn()){
-        this.router.navigate(['login']);
-        return false;
+        return this.router.createUrlTree(['/login']);
       }
-      return this.api.IsloggedIn();
+      
+      if (route.data.roles && !route.data.roles.includes(userRole)) {
+        // if user's role is not authorized for this route, redirect to home page
+        return this.router.createUrlTree(['/']);
+      } 
+      return true;
   }
 }

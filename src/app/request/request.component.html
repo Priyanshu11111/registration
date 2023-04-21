@@ -1,0 +1,15 @@
+<div class="form-style-2">
+    <div class="form-style-2-heading">Create Models</div>
+    <form [formGroup]="requestForm" (ngSubmit)="submitRequest()">
+      <label for="types"><span>Types <span class="required">*</span></span></label>
+      <select class="input-field" name="types" formControlName="types" (change)="onChange($event)" >
+        <option *ngFor="let users of users"[value]="users.id">{{ users.name }}</option>
+      </select>
+      <label for="model"><span>Models <span class="required">*</span></span></label>
+      <select class="input-field" name="model" formControlName="models">
+        <option *ngFor="let model of models" [value]="model.id">{{ model.name }}</option>
+      </select>      
+      <label for="name"><span>Request Reason <span class="required">*</span></span><input type="text" class="input-field" name="name" value="" formControlName="requestreason" /></label>
+      <label><span> </span><input type="submit" [disabled]="requestForm.invalid" value="Submit"/></label>
+    </form>
+  </div>

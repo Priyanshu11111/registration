@@ -23,14 +23,8 @@ ngOnInit():void{
 editUser(id:number,data:any){
   this.api.editUser(id,data).subscribe((data: any) => {
     this.customers_data= data;
-    console.log(this.customers_data.customer);
- /*    this.registerForm.patchValue({
-      firstname:this.customers_data.customer.firstname,
-      lastname:this.customers_data.customer.lastname,
-      email:this.customers_data.customer.email,
-    }) */
   });
-  this.router.navigate(['admin/showemployee/edit',id])
+  this.router.navigate(['admin/admindashbord/edit',id])
 }
 deleteUser(id: number) {
   if (confirm("Are you sure you want to delete this user?")) {
@@ -40,6 +34,6 @@ deleteUser(id: number) {
   }
 }
 getUserRole() {
-  return localStorage.getItem('userRole');
+  return localStorage.getItem('role');
 }
 }

@@ -1,0 +1,27 @@
+
+<div class="content-controls">
+</div>
+<div class="table-wrapper">
+    <table class="fl-table">
+        <thead>
+        <tr>
+            <th>Types</th>
+            <th>Model</th>
+            <th>Request Reason</th>
+            <th>Created_at</th>
+            <th>Updated_at</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+        <tr *ngFor="let user of request">
+            <td scope="row" (click)="show(user.id)" >{{ user.type.name }} </td> 
+            <td>{{ user.model.name }}</td>
+            <td>{{ user.requestreason }}</td>
+            <td>{{ user.created_at|date:'yyyy-MM-dd HH:mm:ss'}}</td>
+            <td>{{ user.updated_at|date:'yyyy-MM-dd HH:mm:ss'}}</td>
+            <td>{{user.status == '1' ? 'Accept' : user.status =='-1' ? 'Reject' : 'Pending'}}</td>
+            <button  *ngIf="user.status == '0'" (click)="Accept(user.id,user)">Accept</button>
+            <button  *ngIf="user.status == '0'"  (click)="Reject(user.id,user)">Reject</button>
+        </thead>
+        <tbody>
+        <tbody>

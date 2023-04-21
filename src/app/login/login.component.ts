@@ -19,6 +19,13 @@ ngOnInit(): void {
     "password":new FormControl(null),
   });
   if(this.api.IsloggedIn()){
+    if(this.api.getUserRole()=== 'admin')
+    {
+      this.router.navigate(['admin']);
+    }
+    else if (this.api.getUserRole()=== 'user'){
+      this.router.navigate(['users']);
+    }
   }  
 };
 onSubmit(){
@@ -30,10 +37,10 @@ onSubmit(){
       if (response.token) {
         localStorage.setItem('token', response.token);
         if (credentials.email === 'superadmin@gmail.com') {
-          this.api.setUserRole(1);
+          this.api.setUserRole('admin');
           this.router.navigate(['admin']);
         } else {
-         this.api.setUserRole(0);
+         this.api.setUserRole('user');
          this.router.navigate(['users'])
         }
       }
@@ -42,6 +49,7 @@ onSubmit(){
       alert('Authentication failed');
     }
   );
+  
   }
 }
 

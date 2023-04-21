@@ -1,0 +1,13 @@
+<div class="form-style-2">
+  <div class="form-style-2-heading">Show Requests</div>
+  <form [formGroup]="showrequests">
+    <label for="types"><span>Types <span class="required">*</span></span></label>
+    <label>{{ showrequests.controls['types'].value }}</label>
+
+    <label for="model"><span>Model <span class="required">*</span></span></label>    
+    <label>{{ showrequests.controls['model'].value }}</label>
+
+    <label for="name"><span>Request Reason <span class="required">*</span></span></label>
+    <label>{{ showrequests.controls['requestreason'].value }}</label>
+  </form>
+</div>
