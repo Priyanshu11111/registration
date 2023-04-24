@@ -1,0 +1,8 @@
+<div class="form-style-2">
+    <div class="form-style-2-heading">Create Types</div>
+    <form [formGroup]="roleForm" (ngSubmit)="roleSubmit()">
+    <label for="field1"><span>Name <span class="required">*</span></span><input type="text" class="input-field" name="field1" value="" formControlName="name"/>
+    </label>
+    <label><span> </span><input type="submit"[disabled]="roleForm.invalid" value="Submit" /></label>
+    </form>
+    </div>

@@ -16,7 +16,7 @@ const routes: Routes = [
     {path:'profile',component:ProfileComponent},
     {path:'request',component:RequestComponent},
     {path:'requestlist',component:RequestlistComponent},
-    {path:'showrequests/:id',component:ShowrequestsComponent,canActivate:[AuthGuard],data:{roles: ['user']}},
+    {path:'showrequests/:id',component:ShowrequestsComponent,canActivate:[AuthGuard],data:{roles: ['2']}},
     {path:'notification',component:NotificationComponent},
     {path: '',redirectTo:'/users',pathMatch: 'full'},
   ],

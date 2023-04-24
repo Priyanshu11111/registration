@@ -119,4 +119,14 @@ export class RegistrationService {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.get(`http://127.0.0.1:8000/api/activitylog`, { headers });
   }
+  createroles(data:any){
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.post(`http://127.0.0.1:8000/api/rolecreate`,data, { headers });
+  }
+  getRoles(){
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get(`http://127.0.0.1:8000/api/getrole`, { headers });
+  }
 }

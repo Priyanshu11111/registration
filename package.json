@@ -29,6 +29,7 @@
     "moment": "^2.29.4",
     "ngx-pagination": "^6.0.3",
     "ngx-perfect-scrollbar": "^10.1.1",
+    "ngx-permissions": "^15.0.1",
     "ngx-toastr": "^16.1.0",
     "password-hash": "^1.2.2",
     "popper.js": "^1.16.1",

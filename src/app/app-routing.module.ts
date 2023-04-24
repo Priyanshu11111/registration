@@ -11,13 +11,13 @@ const routes: Routes = [
     path:'admin',
     loadChildren:()=>import('./navbar/admin/admin.module').then((m)=>m.AdminModule),
     canActivate:[AuthGuard],
-    data: { roles: ['admin'] } 
+    data: { roles: ['1'] } 
   },
   {
     path:'users',
     loadChildren:()=>import('./modules/user/user.module').then((m)=>m.UserModule),
     canActivate:[AuthGuard],
-    data: { roles: ['user'] } 
+    data: { roles: ['2'] } 
   },
 ];
 

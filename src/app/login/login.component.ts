@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
 export class LoginComponent {
   constructor(private api:RegistrationService,private router: Router
   ){}
@@ -19,11 +20,11 @@ ngOnInit(): void {
     "password":new FormControl(null),
   });
   if(this.api.IsloggedIn()){
-    if(this.api.getUserRole()=== 'admin')
+    if(this.api.getUserRole()=== '1')
     {
       this.router.navigate(['admin']);
     }
-    else if (this.api.getUserRole()=== 'user'){
+    else if (this.api.getUserRole()=== '2'){
       this.router.navigate(['users']);
     }
   }  
@@ -37,10 +38,10 @@ onSubmit(){
       if (response.token) {
         localStorage.setItem('token', response.token);
         if (credentials.email === 'superadmin@gmail.com') {
-          this.api.setUserRole('admin');
+          this.api.setUserRole('1');
           this.router.navigate(['admin']);
         } else {
-         this.api.setUserRole('user');
+         this.api.setUserRole('2');
          this.router.navigate(['users'])
         }
       }

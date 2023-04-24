@@ -10,7 +10,6 @@ import { ShowcustomerComponent } from './showcustomer/showcustomer.component';
 import { LoginComponent } from './login/login.component';
 import{NgxPaginationModule}from 'ngx-pagination'
 import { Subscription } from 'rxjs';
-
 import { AdminRoutingModule } from './navbar/admin/admin-routing.module';
 import { UserComponent } from './user/user.component';
 import { UserdashbordComponent } from './userdashbord/userdashbord.component';
@@ -34,6 +33,9 @@ import { ShowrequestsComponent } from './showrequests/showrequests.component';
 import { ViewtypesComponent } from './viewtypes/viewtypes.component';
 import { ViewmodelsComponent } from './viewmodels/viewmodels.component';
 import { ViewsuppliersComponent } from './viewsuppliers/viewsuppliers.component';
+import { PermissionComponent } from './permission/permission.component';
+import { RolesComponent } from './roles/roles.component';
+import { ShowrolesComponent } from './showroles/showroles.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,6 +61,9 @@ import { ViewsuppliersComponent } from './viewsuppliers/viewsuppliers.component'
     ViewtypesComponent,
     ViewmodelsComponent,
     ViewsuppliersComponent,
+    PermissionComponent,
+    RolesComponent,
+    ShowrolesComponent,
   ],
   imports: [
 
