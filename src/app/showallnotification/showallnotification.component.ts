@@ -17,7 +17,6 @@ ngOnInit():void{
     this.request= data;   
     console.log(this.request);
    })
-
 }
 Accept(id:number,data:any){
   if (confirm("Are you sure you want to Accept this Request?")){  

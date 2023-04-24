@@ -2,6 +2,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import{RegistrationService}from'../../app/registration.service';
 import { ActivatedRoute, Router } from'@angular/router';
 import{FormGroup,FormControl,Validators}from'@angular/forms';
+import Pusher from 'pusher-js';
 
 @Component({
   selector: 'app-navbar',
@@ -24,6 +25,21 @@ unread:any;
 unreadCount:number=0;
 customerName: string='';
 ngOnInit():void{
+  const pusher = new Pusher('add73946e79f8b4e1b9c', {
+    cluster: 'ap2',
+  });
+
+  const channel = pusher.subscribe('my-channel');
+  channel.bind('my-event', (data: any) => {
+    const notification = new Notification('Request Get succesfully!', {
+        icon: '/assets/icons/check.png',
+        body: `User ${data.user_name} requested to ${data.models}`,
+      });
+      notification.onclick = () => {
+        this.router.navigate(['request']);
+        notification.close();
+      };
+  });
  /*    this.api.assetCall().subscribe((data)=>{
       this.asset = data;
     }) */  this.api.getLatestNotification().subscribe((data: any) => {
@@ -31,6 +47,21 @@ ngOnInit():void{
       this.unreadCount = data.unread_count;
     });
   }
+  onNotificationClick(type:any) {
+    if (type == "App\\\Notifications\\\RequsetNotification") {
+      this.router.navigate(['request']);
+    } 
+    else if(type == "App\\\Notifications\\\ModelsNotification"){
+      this.router.navigate(['showmodels']);
+    }
+    else if(type =="App\\\Notifications\\\TypesNotification"){
+      this.router.navigate(['typeslist']);
+    }
+    else if(type =="App\\\Notifications\\\SuppliersNotification"){
+      this.router.navigate(['supplierlist']);
+    }
+    }
+    
   markAsread(id:number){
     this.api.markAsread(id).subscribe((data: any) => {
       if (Notification.permission === 'granted') {
@@ -39,6 +70,7 @@ ngOnInit():void{
           body: 'Your Message has Read successfully.'
         });
       }
+      
       this.unread=data;
       this.unreadCount --;
       this.notification = this.notification.filter((n: any) => n.id !== id);

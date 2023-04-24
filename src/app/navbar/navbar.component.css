@@ -59,6 +59,16 @@ nav{
     overflow: hidden;
     text-overflow: ellipsis;
   }
+  .notification-container {
+    position: relative;
+  }
+  
+  .view-all-container {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+  }
   @media only screen and (max-width:375px ) {
     .navbar-nav mp-auto{
         float: none;

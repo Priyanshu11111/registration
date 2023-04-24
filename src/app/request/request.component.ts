@@ -45,12 +45,12 @@ export class RequestComponent {
     const formData = this.requestForm.value;
     console.log(this.requestForm.value);
     this.request.request(formData).subscribe((response) => {
-      if (Notification.permission === 'granted') {
+  /*     if (Notification.permission === 'granted') {
         new Notification('Request submitted successfully!', {
           icon: '/assets/icons/check.png',
           body: 'Your request has send successfully.'
         });
-      } 
+      }  */
       if(this.requestForm.valid){
         alert(`Thank You`);
       }
