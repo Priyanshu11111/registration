@@ -10,7 +10,9 @@
             <th>Created_at</th>
             <th>Updated_at</th>
             <th>Status</th>
-        </tr>   
+        </tr>
+        </thead>
+        <tbody>
         <tr *ngFor="let user of requestlist">
             <td scope="row" (click)="showrequest(user.id)">{{ user.type.name }}</td>
             <td>{{ user.model.name }}</td>
@@ -18,6 +20,11 @@
             <td>{{ user.created_at|date:'yyyy-MM-dd HH:mm:ss'}}</td>
             <td>{{ user.updated_at|date:'yyyy-MM-dd HH:mm:ss'}}</td>
             <td>{{user.status == '1' ? 'Accept' : user.status =='-1' ? 'Reject' : 'Pending'}}</td>
-        </thead>
-        <tbody>
-        <tbody>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div *ngIf="errorMessage" class="alert alert-danger" style="max-width: 40;" >{{ errorMessage }}</div>
+
+
+

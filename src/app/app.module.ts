@@ -36,6 +36,7 @@ import { ViewsuppliersComponent } from './viewsuppliers/viewsuppliers.component'
 import { PermissionComponent } from './permission/permission.component';
 import { RolesComponent } from './roles/roles.component';
 import { ShowrolesComponent } from './showroles/showroles.component';
+import { NgxPermissionsModule } from 'ngx-permissions';
 @NgModule({
   declarations: [
     AppComponent,

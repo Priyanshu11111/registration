@@ -101,3 +101,6 @@ label {
     display: inline-block;
     margin-right: 10px;
   }
+  .form-group.role-selection {
+	margin-bottom: 20px;
+  }

@@ -35,7 +35,7 @@
             <i class="fa-sharp fa-solid fa-bell" ></i>
             <span class="badge badge-pill badge-danger" > {{ unreadCount }}</span>
           </a> 
-          <ul class="dropdown-menu dropdown-menu-dark" style="max-height: 500px; overflow-y: auto;">
+          <ul class="dropdown-menu dropdown-menu-dark" style="max-height: 400px; overflow-y: auto;">
             <li class="let" *ngFor="let user of notification"  (click)="onNotificationClick(user.type)">
               <a class="dropdown-item">{{ user.data }} <i class="fa-sharp fa-solid fa-check" (click)="markAsread(user.id)" ></i></a>
               <li class="dropdown-menu-center">

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import{FormGroup,FormControl,Validators}from'@angular/forms';
+import{FormGroup,FormControl,Validators,FormBuilder,FormArray}from'@angular/forms';
 import{RegistrationService}from'../../app/registration.service';
+import { PermissionService } from '../permission.service';
 
 @Component({
   selector: 'app-permission',
@@ -10,21 +11,56 @@ import{RegistrationService}from'../../app/registration.service';
 export class PermissionComponent {
 permissionForm:any
 roles:any;
+modules:any;
 constructor(private api:RegistrationService
-  ){}
+ ,private permis:PermissionService,private fb: FormBuilder ){}
+permissions: any;
+
 ngOnInit() {
   this.api.getRoles().subscribe((data:any) => {
     this.roles = data
   })
-  this.permissionForm = new FormGroup({
-    'name': new FormControl(),
-    'read': new FormControl(),
-    'write': new FormControl(),
-    'disabled': new FormControl()
+  this.permis.getmodules().subscribe((data:any) => {
+    this.modules=data;
+    console.log(data);
+    for (let module of this.modules) {
+      this.addFields();
+    }
+  })
+  this.permissionForm = this.fb.group({
+    name: ['', [Validators.required]],
+    role: ['', Validators.required],
+    permissions: this.fb.array([])
   });
+  this.permissions = this.permissionForm.get('permissions') as FormArray;
+  this.addFields();
 }
+addFields() {
+  if (!this.modules || this.modules.length === 0) {
+    return;
+  }
+  const newGroup = this.fb.group({
+  permission: [this.modules[this.permissions.length].id],
+    read: ['', Validators.required],
+    write: ['', Validators.required],
+    disable: ['', Validators.required]
+  });
+  this.permissions.push(newGroup);
+}
+
 submitData(){
-console.log(this.permissionForm.value);
+  const formData={
+    ...this.permissionForm.value
+  }
+  formData.permissions.forEach((permission: any) => {
+    permission.read = permission.read ? 1 : 0;
+    permission.write = permission.write ? 1 : 0;
+    permission.disable = permission.disable ? 1 : 0;
+  });
+  this.permis.createpermission(formData).subscribe((data:any)=>{
+    alert('Permission Added')
+  })
+  console.log(this.permissionForm.value)
 }
 
 }

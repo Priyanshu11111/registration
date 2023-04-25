@@ -1,15 +1,55 @@
 <div class="form-style-2">
     <div class="form-style-2-heading">Role Based Permission</div>
-    <form [formGroup]="permissionForm" (ngSubmit)="submitData()">
-    <label for="field1"><span>Name <span class="required">*</span></span>
-        <select class="select-field" formControlName="name">
-            <option *ngFor="let role of roles" [value]="role.name">{{ role.name }}</option>
+    <form [formGroup]="permissionForm" (ngSubmit)="submitData()" class="needs-validation" novalidate>
+     
+      <div class="form-group row">
+        <label for="name" class="col-sm-2 col-form-label"><span>Name <span class="required">*</span></span></label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="name" name="name" formControlName="name" required>
+          <div class="invalid-feedback">
+            Please enter a name.
+          </div>
+        </div>
+      </div>
+  
+      <div class="form-group row role-selection">
+        <label for="role" class="col-sm-2 col-form-label"><span>Role <span class="required">*</span></span></label>
+        <div class="col-sm-10">
+          <select class="form-control" id="role" name="role" formControlName="role" required>
+            <option *ngFor="let role of roles" [value]="role.id">{{ role.name }}</option>
           </select>
-    </label>
-<label for="fiel2"><span>Permissions</span></label>
-<label for="read"><input type="checkbox" id="read" name="permissions" value="read" formControlName="read" />Read</label>
-<label for="write"><input type="checkbox" id="write" name="permissions" value="write" formControlName="write" />Write</label>
-<label for="disabled"><input type="checkbox" id="disabled" name="permissions" value="disabled" formControlName="disabled" />Disable</label>
-    <label><span> </span><input type="submit"[disabled]="permissionForm.invalid" value="Submit" /></label>
+          <div class="invalid-feedback">
+            Please select a role.
+          </div>
+        </div>
+      </div>
+  
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Module Name</th>
+              <th>Read</th>
+              <th>Write</th>
+              <th>Disable</th>
+            </tr>
+          </thead>
+          <tbody formArrayName="permissions">
+            <tr *ngFor="let field of permissions.controls; let i=index" [formGroupName]="i">
+              <td>{{ modules[i].name }}</td>
+              <td><input type="checkbox" class="form-check-input" id="read{{i}}" name="read{{i}}" formControlName="read"></td>
+              <td><input type="checkbox" class="form-check-input" id="write{{i}}" name="write{{i}}" formControlName="write"></td>
+              <td><input type="checkbox" class="form-check-input" id="disable{{i}}" name="disable{{i}}" formControlName="disable"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  
+      <div class="form-group row">
+        <div class="col-sm-12">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+  
     </form>
-    </div>
+  </div>

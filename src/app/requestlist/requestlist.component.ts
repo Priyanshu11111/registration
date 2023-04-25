@@ -11,10 +11,16 @@ import { Router } from '@angular/router';
 export class RequestlistComponent {
   constructor(private request:RequestService,private router:Router){}
   requestlist:any;
+  errorMessage: any;
   ngOnInit():void{
     this.request.requestlist().subscribe((data) =>{
       this.requestlist = data
-    })
+    },
+    (error) => {
+      console.error(error);
+      this.errorMessage = 'You Have no permissions to access this page contact the administrator';
+    }
+)
   }
 showrequest(id:number){
   this.request.showrequest(id).subscribe((data:any) =>{

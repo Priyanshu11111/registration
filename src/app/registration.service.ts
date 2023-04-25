@@ -10,20 +10,30 @@ import { map, Observable } from 'rxjs';
 export class RegistrationService {
   constructor(private http:HttpClient,private router:Router) { }
   apiCall(){
-    return this.http.get('http://127.0.0.1:8000/api/users');
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get('http://127.0.0.1:8000/api/users',{headers});
   }
   submitData(data:any)  
   {
-    return this.http.post('http://127.0.0.1:8000/api/users',data);  
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.post('http://127.0.0.1:8000/api/users',data,{headers});  
   }
   deleteUser(id: number) {
-    return this.http.delete(`http://127.0.0.1:8000/api/users/${id}`);
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.delete(`http://127.0.0.1:8000/api/users/${id}`,{headers});
   }
   editUser(id: number, data: any) {
-    return this.http.get(`http://127.0.0.1:8000/api/users/${id}`, data);
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get(`http://127.0.0.1:8000/api/users/${id}`, { headers, params: data });
   }
   updateUser(id:number,data:any){
-    return this.http.put(`http://127.0.0.1:8000/api/users/${id}`, data);
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.put(`http://127.0.0.1:8000/api/users/${id}`, data,{headers});
   }
   checkEmailExists(email: string) {
     return this.http.get(`http://127.0.0.1:8000/api/users?email=${email}`);
