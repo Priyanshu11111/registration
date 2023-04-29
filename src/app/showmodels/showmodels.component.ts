@@ -3,6 +3,7 @@ import{ModelService}from'../../app/model.service';
 import { Router } from '@angular/router';
 import{TypesService}from'../../app/types.service';
 import { RequestService } from '../request.service';
+import{RegistrationService}from'../../app/registration.service';
 
 @Component({
   selector: 'app-showmodels',
@@ -10,11 +11,13 @@ import { RequestService } from '../request.service';
   styleUrls: ['./showmodels.component.css']
 })
 export class ShowmodelsComponent {
-  constructor(private Model:ModelService,private router:Router,private api:TypesService,private request:RequestService){}
+  constructor(private Model:ModelService,private router:Router,private api:TypesService,private request:RequestService,private role:RegistrationService){}
   users:any;
   a:any;
   model_data:any;
   types:any;
+  permission: any;
+
   type:any;
   ngOnInit():void{
     this.Model.getmodels().subscribe((data)=>{
@@ -31,6 +34,15 @@ export class ShowmodelsComponent {
       });
     }
   }
+  hasWritePermission(moduleName: string):boolean{
+    const permissionsStr = localStorage.getItem('permissions');
+    if (permissionsStr) {
+      const permissions = JSON.parse(permissionsStr);
+      const hasReadPermission = permissions.some((permission: any) => permission.module === moduleName && permission.write);
+      return hasReadPermission;
+    }
+    return false;
+  }
  /*  getTypeName(Id: number) {
     const type = this.types.find((types:any) => types.id == Id);
     return type ? type.name : '';
@@ -39,12 +51,18 @@ export class ShowmodelsComponent {
     this.Model.editModel(id,data).subscribe((data: any) => {
       this.model_data= data;
     });
-    this.router.navigate(['models/edit',id])
+    if(this.role.getUserRole()==='1'){
+      this.router.navigate(['models/edit',id])
+    }
+    else  
+    {
+      this.router.navigate(['users/models/edit',id])
+    }
   }
   view(id:number,data:any){
     this.Model.editModel(id,data).subscribe((data: any) => {
       this.model_data= data;
     });
-    this.router.navigate(['admin/modelsview',id],{ skipLocationChange: true })
+    this.router.navigate(['modelsview',id],{ skipLocationChange: true })
   }
 }

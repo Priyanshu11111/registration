@@ -22,6 +22,16 @@ export class RequestlistComponent {
     }
 )
   }
+  hasReadPermission(moduleName: string): boolean {
+    const permissionsStr = localStorage.getItem('permissions');
+    if (permissionsStr) {
+      const permissions = JSON.parse(permissionsStr);
+      const hasReadPermission = permissions.some((permission: any) => permission.module === moduleName && permission.read);
+      console.log(`Has read permission for ${moduleName} module: ${hasReadPermission}`);
+      return hasReadPermission;
+    }
+    return false;
+  }
 showrequest(id:number){
   this.request.showrequest(id).subscribe((data:any) =>{
     this.request=data;

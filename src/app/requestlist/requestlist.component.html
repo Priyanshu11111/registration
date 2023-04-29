@@ -1,7 +1,8 @@
-<div class="content-controls">
+<div class="content-controls" >
 </div>
 <div class="table-wrapper">
-    <table class="fl-table">
+    
+    <table class="fl-table" >
         <thead>
         <tr>
             <th>Types</th>
@@ -9,7 +10,7 @@
             <th>Request Reason</th>
             <th>Created_at</th>
             <th>Updated_at</th>
-            <th>Status</th>
+            <th *ngIf="hasReadPermission('Request')">Status</th>
         </tr>
         </thead>
         <tbody>
@@ -19,12 +20,11 @@
             <td>{{ user.requestreason }}</td>
             <td>{{ user.created_at|date:'yyyy-MM-dd HH:mm:ss'}}</td>
             <td>{{ user.updated_at|date:'yyyy-MM-dd HH:mm:ss'}}</td>
-            <td>{{user.status == '1' ? 'Accept' : user.status =='-1' ? 'Reject' : 'Pending'}}</td>
+            <td *ngIf="hasReadPermission('Request')">{{user.status == '1' ? 'Accept' : user.status =='-1' ? 'Reject' : 'Pending'}}</td>
         </tr>
         </tbody>
     </table>
 </div>
-<div *ngIf="errorMessage" class="alert alert-danger" style="max-width: 40;" >{{ errorMessage }}</div>
 
 
 

@@ -56,14 +56,19 @@ export class RegistrationService {
   authenticateUser(credentials: any) {
     return this.http.post('http://127.0.0.1:8000/api/users/login', credentials);
   }
+  setpermission(permissions: string):void{
+    localStorage.setItem('permissions', JSON.stringify(permissions));
+  }
   setToken(token: string) :void{  
     localStorage.setItem('token', token);
+    console.log(token)
   }
   getToken() :string|null{
     return localStorage.getItem('token');
   }
   IsloggedIn(){
     return localStorage.getItem('token') !== null;
+    return localStorage.getItem('permission') !== null;
   }
  /*  setUserRole(role: number) {
     localStorage.setItem('userRole', role.toString());
@@ -73,6 +78,9 @@ export class RegistrationService {
   } */
   getUserRole(): string {
     return localStorage.getItem('role') || '';
+  }
+  getpermission():string{
+    return localStorage.getItem('permissions') || '';
   }
   setUserRole(role: string) {
     localStorage.setItem('role', role);
@@ -84,6 +92,7 @@ export class RegistrationService {
   logout() {
     const token = localStorage.getItem('token');
     localStorage.removeItem('token');
+    
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     this.router.navigate(['/login']);
     return this.http.post(`http://127.0.0.1:8000/api/logout`, null, { headers });

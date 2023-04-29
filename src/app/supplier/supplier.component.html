@@ -10,7 +10,6 @@
   </form>
   <div *ngFor="let field of supplierForm.get('fields').controls; let i = index">
     <form [formGroup]="field">
-     
       <label for="supplier_name{{i}}"><span>Name <span class="required">*</span></span><input type="text" class="input-field" name="supplier_name{{i}}" value="" formControlName="supplier_name" /></label>
       <label for="address{{i}}"><span>Address <span class="required">*</span></span><input type="text" class="input-field" name="address{{i}}" value="" formControlName="address" /></label>
       <label for="number{{i}}"><span>Number <span class="required">*</span></span><input type="number" class="input-field" name="number{{i}}" value="" formControlName="number" /></label>

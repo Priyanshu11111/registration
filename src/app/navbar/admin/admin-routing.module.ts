@@ -42,7 +42,7 @@ const routes: Routes = [{
     {path:'showrequests/:id',component:ShowrequestsComponent,canActivate:[AuthGuard],data:{roles: ['1']}},
     {path:'request',component:ShowallnotificationComponent,canActivate:[AuthGuard],data:{roles: ['1']}},
     {path:'supplier/edit/:id',component:SupplierComponent,canActivate:[AuthGuard],data:{roles: ['1']}},
-    {path:'',redirectTo:'/admin',pathMatch:'full'},
+    {path:'',redirectTo:'/admin/admindashbord',pathMatch:'full'},
   ],
 },
 ];

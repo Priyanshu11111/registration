@@ -17,9 +17,27 @@ export class UserComponent {
     this.api.getLatestNotification().subscribe((data: any) => {
       this.notification = data.notifications;
       this.unreadCount = data.unread_count;
-/*       this.notification = this.notification.filter((notification: any) => notification.id !== id);
- */    });
+  });
   
+  }
+
+  hasReadPermission(moduleName: string): boolean {
+    const permissionsStr = localStorage.getItem('permissions');
+    if (permissionsStr) {
+      const permissions = JSON.parse(permissionsStr);
+      const hasReadPermission = permissions.some((permission: any) => permission.module === moduleName && permission.read);
+      return hasReadPermission;
+    }
+    return false;
+  }
+  hasWritePermission(moduleName: string):boolean{
+    const permissionsStr = localStorage.getItem('permissions');
+    if (permissionsStr) {
+      const permissions = JSON.parse(permissionsStr);
+      const hasReadPermission = permissions.some((permission: any) => permission.module === moduleName && permission.write);
+      return hasReadPermission;
+    }
+    return false;
   }
   markAsread(id:number){
     this.api.markAsread(id).subscribe((data: any) => {

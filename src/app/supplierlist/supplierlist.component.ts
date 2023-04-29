@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
 import{SuppliersService}from'../../app/suppliers.service';
 import { Router } from '@angular/router';
+import{RegistrationService}from'../../app/registration.service';
+
 @Component({
   selector: 'app-supplierlist',
   templateUrl: './supplierlist.component.html',
   styleUrls: ['./supplierlist.component.css']
 })
 export class SupplierlistComponent {
-  constructor(private api:SuppliersService,private router:Router){}
+  constructor(private api:SuppliersService,private router:Router,private role:RegistrationService){}
   users:any;
   supplier_data:any
   a:any;
@@ -23,10 +25,24 @@ export class SupplierlistComponent {
       });
     }
   }
+  hasWritePermission(moduleName: string):boolean{
+    const permissionsStr = localStorage.getItem('permissions');
+    if (permissionsStr) {
+      const permissions = JSON.parse(permissionsStr);
+      const hasReadPermission = permissions.some((permission: any) => permission.module === moduleName && permission.write);
+      return hasReadPermission;
+    }
+    return false;
+  }
   editsupplier(id:number,data:any){
     this.api.editsupplier(id,data).subscribe((data:any) => {
       this.supplier_data=data;
   });
-  this.router.navigate(['supplier/edit',id])
+  if(this.role.getUserRole()=='1'){
+    this.router.navigate(['supplier/edit',id])
+  }
+  else{
+    this.router.navigate(['users/supplier/edit',id])
+  }
   }
 }

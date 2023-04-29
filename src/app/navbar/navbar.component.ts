@@ -24,7 +24,23 @@ notification: any;
 unread:any;
 unreadCount:number=0;
 customerName: string='';
+hasTypeReadPermission = false;
+hasModelReadPermission = false;
+hasSupplierReadPermission=false;
+hasActivityPermission=false;
+hasRequestPermission=false;
 ngOnInit():void{
+  const permissionsStr = localStorage.getItem('permissions');
+  if (permissionsStr) {
+   const permissions = JSON.parse(permissionsStr);
+   console.log(permissions);
+   const modules = ['Types', 'Models', 'Supplier', 'Activity', 'Request'];
+   for (const module of modules) {
+    const hasReadPermission = permissions.some((permission: any) => permission.module === module && permission.read);
+    const hasWritePermission = permissions.some((permission: any) => permission.module === module && permission.write);
+    console.log(`Module ${module}: Read=${hasReadPermission}, Write=${hasWritePermission}`);
+  }
+ }
   const pusher = new Pusher('add73946e79f8b4e1b9c', {
     cluster: 'ap2',
   });

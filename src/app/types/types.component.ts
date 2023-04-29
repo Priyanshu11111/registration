@@ -23,6 +23,15 @@ ngOnInit() {
     this.edittype(params["id"],[])
 })
 }
+hasWritePermission(moduleName: string):boolean{
+  const permissionsStr = localStorage.getItem('permissions');
+  if (permissionsStr) {
+    const permissions = JSON.parse(permissionsStr);
+    const hasReadPermission = permissions.some((permission: any) => permission.module === moduleName && permission.write);
+    return hasReadPermission;
+  }
+  return false;
+}
 createTypes(){
   const formData = {
     ...this.typesForm.value,

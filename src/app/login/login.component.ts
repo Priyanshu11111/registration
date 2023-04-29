@@ -25,7 +25,7 @@ ngOnInit(): void {
       this.router.navigate(['admin']);
     }
     else if (this.api.getUserRole()=== '2'){
-      this.router.navigate(['users']);
+      this.router.navigate(['users/usersdashboard']);
     }
   }  
 };
@@ -35,14 +35,17 @@ onSubmit(){
     password: this.loginForm.value.password
   }; this.api.authenticateUser(credentials).subscribe(
     (response: any) => {
+      
       if (response.token) {
         localStorage.setItem('token', response.token);
+        localStorage.setItem('permissions',JSON.stringify(response.permissions));
+        console.log(JSON.stringify(response.permissions))
         if (credentials.email === 'superadmin@gmail.com') {
           this.api.setUserRole('1');
-          this.router.navigate(['admin']);
+          this.router.navigate(['admin/admindashbord']);
         } else {
          this.api.setUserRole('2');
-         this.router.navigate(['users'])
+         this.router.navigate(['users/usersdashboard'])
         }
       }
     },

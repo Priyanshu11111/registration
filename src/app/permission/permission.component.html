@@ -34,7 +34,7 @@
               <th>Disable</th>
             </tr>
           </thead>
-          <tbody formArrayName="permissions">
+          <tbody formArrayName="module">
             <tr *ngFor="let field of permissions.controls; let i=index" [formGroupName]="i">
               <td>{{ modules[i].name }}</td>
               <td><input type="checkbox" class="form-check-input" id="read{{i}}" name="read{{i}}" formControlName="read"></td>

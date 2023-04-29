@@ -10,7 +10,7 @@
             <th>Comment</th>
             <th>Created_at</th>
             <th>Updated_at</th>
-            <th>Action</th>
+            <th *ngIf="hasWritePermission('Supplier')">Action</th>
         </tr>
         <tr *ngFor="let user of users|paginate:{itemsPerPage:15,currentPage:a}">
             <td scope="row">{{user.id}}</td>
@@ -18,8 +18,8 @@
             <td>{{ user.comment }}</td>
             <td>{{ user.created_at|date:'yyyy-MM-dd HH:mm:ss'}}</td>
             <td>{{ user.updated_at|date:'yyyy-MM-dd HH:mm:ss'}}</td>
-            <button  (click)="deletesupplier(user.id)">Delete</button>
-            <button (click)="editsupplier(user.id,user)">Edit</button>
+            <button *ngIf="hasWritePermission('Supplier')" (click)="deletesupplier(user.id)">Delete</button>
+            <button *ngIf="hasWritePermission('Supplier')"(click)="editsupplier(user.id,user)">Edit</button>
         </thead>
         <tbody>
         <tbody>

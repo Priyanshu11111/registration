@@ -30,9 +30,9 @@ ngOnInit() {
   this.permissionForm = this.fb.group({
     name: ['', [Validators.required]],
     role: ['', Validators.required],
-    permissions: this.fb.array([])
+    module: this.fb.array([])
   });
-  this.permissions = this.permissionForm.get('permissions') as FormArray;
+  this.permissions = this.permissionForm.get('module') as FormArray;
   this.addFields();
 }
 addFields() {
@@ -40,7 +40,7 @@ addFields() {
     return;
   }
   const newGroup = this.fb.group({
-  permission: [this.modules[this.permissions.length].id],
+  module: [this.modules[this.permissions.length].name],
     read: ['', Validators.required],
     write: ['', Validators.required],
     disable: ['', Validators.required]
@@ -52,7 +52,7 @@ submitData(){
   const formData={
     ...this.permissionForm.value
   }
-  formData.permissions.forEach((permission: any) => {
+  formData.module.forEach((permission: any) => {
     permission.read = permission.read ? 1 : 0;
     permission.write = permission.write ? 1 : 0;
     permission.disable = permission.disable ? 1 : 0;

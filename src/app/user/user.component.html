@@ -9,9 +9,25 @@
           <ul class="dropdown-menu dropdown-menu-dark">
             <li><a class="dropdown-item" routerLink="./request"> <i class="fa-solid fa-bars-staggered"></i> Request </a></li>
             <li><a class="dropdown-item" routerLink="./usersdashboard"> <i class="fa-solid fa-bars-staggered"></i> User Dashbord</a></li>
-            <li><a class="dropdown-item" routerLink="./requestlist"> <i class="fas fa-file-signature"></i> Request List </a></li>
+            <li><a class="dropdown-item"class="dropdown-item" routerLink="./types" *ngIf="hasWritePermission('Types')"><i class="fa-solid fa-file"></i> Create Types</a></li>
+            <li><a class="dropdown-item"class="dropdown-item" routerLink="./supplier"*ngIf="hasWritePermission('Supplier')"><i class="fa-solid fa-users"></i> Create Supplier</a></li>
+            <li><a class="dropdown-item"class="dropdown-item" routerLink="./models"*ngIf="hasWritePermission('Models')"><i class="fa-solid fa-circle-down"></i> Create Models</a></li>
           </ul>
         </li>
+      <ul class="navbar-nav me-auto">
+        <li class="nav item dropdown"*ngIf="hasReadPermission('Types')">
+          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"> <i class="fa-solid fa-bars-staggered"></i>
+          Dashbord
+          </a> 
+          <ul class="dropdown-menu dropdown-menu-dark">
+            <li><a class="dropdown-item"class="dropdown-item" routerLink="./typeslist"*ngIf="hasReadPermission('Types')"><i class="fa-solid fa-list-ul"></i> Types List </a></li>
+            <li><a class="dropdown-item"class="dropdown-item" routerLink="./requestlist" *ngIf="hasReadPermission('Request')"> <i class="fas fa-file-signature"></i> Request List </a></li>
+            <li><a class="dropdown-item"class="dropdown-item" routerLink="./showmodels"*ngIf="hasReadPermission('Models')"> <i class="fa-solid fa-circle-info"></i> Show Models</a></li>
+            <li><a class="dropdown-item"class="dropdown-item" routerLink="./supplierlist"*ngIf="hasReadPermission('Supplier')"><i class="fa-solid fa-user-check"></i> Supplier list </a></li>
+            <li><a class="dropdown-item"class="dropdown-item" routerLink="./activitylog"*ngIf="hasReadPermission('Activity')"><i class="fa-solid fa-chart-line"></i> Activity Log </a></li>
+          </ul>
+        </li>
+      </ul>
       </ul>
         <li class="nav item dropdown">
           <a class="nav-link dropdown-toggle" role="button" class="notification" data-bs-toggle="dropdown">
