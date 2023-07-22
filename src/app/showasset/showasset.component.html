@@ -1,0 +1,30 @@
+<div class="content-controls">
+</div>
+<div class="table-wrapper">
+    <table class="fl-table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Model</th>
+            <th>Ownername</th>
+            <th>Status</th>
+            <th>Created_at</th>
+            <th>Updated_at</th>
+            <th>Action</th>
+        </tr>
+        <tr *ngFor="let user of showasset">
+            <td scope="row">{{user.id}}</td>
+            <td>{{ user.name }}</td>
+            <td>{{ user.model.name }}</td>
+            <td>{{ user.ownername.firstname }}</td>
+            <td>{{ user.status }}</td>
+            <td>{{ user.created_at|date:'yyyy-MM-dd HH:mm:ss'}}</td>
+            <td>{{ user.updated_at|date:'yyyy-MM-dd HH:mm:ss'}}</td>
+            <button  (click)="deleteasset(user.id)">Delete</button>
+            <button  (click)="editasset(user.id,user)">edit</button>
+        </thead>
+        <tbody>
+        <tbody>
+    </table>
+</div>

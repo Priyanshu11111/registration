@@ -15,6 +15,7 @@ export class RequestlistComponent {
   ngOnInit():void{
     this.request.requestlist().subscribe((data) =>{
       this.requestlist = data
+      console.log(data)
     },
     (error) => {
       console.error(error);

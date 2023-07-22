@@ -37,6 +37,10 @@ import { PermissionComponent } from './permission/permission.component';
 import { RolesComponent } from './roles/roles.component';
 import { ShowrolesComponent } from './showroles/showroles.component';
 import { NgxPermissionsModule } from 'ngx-permissions';
+import { AssetComponent } from './asset/asset.component';
+import { ShowpermissionComponent } from './showpermission/showpermission.component';
+import { ShowassetComponent } from './showasset/showasset.component';
+import { AuthassetComponent } from './authasset/authasset.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,6 +69,10 @@ import { NgxPermissionsModule } from 'ngx-permissions';
     PermissionComponent,
     RolesComponent,
     ShowrolesComponent,
+    AssetComponent,
+    ShowpermissionComponent,
+    ShowassetComponent,
+    AuthassetComponent,
   ],
   imports: [
 

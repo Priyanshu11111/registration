@@ -38,7 +38,6 @@ ngOnInit():void{
    for (const module of modules) {
     const hasReadPermission = permissions.some((permission: any) => permission.module === module && permission.read);
     const hasWritePermission = permissions.some((permission: any) => permission.module === module && permission.write);
-    console.log(`Module ${module}: Read=${hasReadPermission}, Write=${hasWritePermission}`);
   }
  }
   const pusher = new Pusher('add73946e79f8b4e1b9c', {

@@ -8,24 +8,71 @@
           </a> 
           <ul class="dropdown-menu dropdown-menu-dark">
             <li><a class="dropdown-item" routerLink="./request"> <i class="fa-solid fa-bars-staggered"></i> Request </a></li>
-            <li><a class="dropdown-item" routerLink="./usersdashboard"> <i class="fa-solid fa-bars-staggered"></i> User Dashbord</a></li>
-            <li><a class="dropdown-item"class="dropdown-item" routerLink="./types" *ngIf="hasWritePermission('Types')"><i class="fa-solid fa-file"></i> Create Types</a></li>
-            <li><a class="dropdown-item"class="dropdown-item" routerLink="./supplier"*ngIf="hasWritePermission('Supplier')"><i class="fa-solid fa-users"></i> Create Supplier</a></li>
-            <li><a class="dropdown-item"class="dropdown-item" routerLink="./models"*ngIf="hasWritePermission('Models')"><i class="fa-solid fa-circle-down"></i> Create Models</a></li>
           </ul>
         </li>
       <ul class="navbar-nav me-auto">
-        <li class="nav item dropdown"*ngIf="hasReadPermission('Types')">
+        <li class="nav item dropdown">
           <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"> <i class="fa-solid fa-bars-staggered"></i>
           Dashbord
           </a> 
           <ul class="dropdown-menu dropdown-menu-dark">
+            <li><a class="dropdown-item" routerLink="./usersdashboard"> <i class="fa-solid fa-bars-staggered"></i> User Dashbord</a></li>
+           
+          </ul>
+        </li>
+      </ul>
+      <ul class="navbar-nav me-auto">
+        <li class="nav item dropdown"*ngIf="hasReadPermission('Types')">
+          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"> 
+          Types
+          </a> 
+          <ul class="dropdown-menu dropdown-menu-dark">
             <li><a class="dropdown-item"class="dropdown-item" routerLink="./typeslist"*ngIf="hasReadPermission('Types')"><i class="fa-solid fa-list-ul"></i> Types List </a></li>
-            <li><a class="dropdown-item"class="dropdown-item" routerLink="./requestlist" *ngIf="hasReadPermission('Request')"> <i class="fas fa-file-signature"></i> Request List </a></li>
+            <li><a class="dropdown-item"class="dropdown-item" routerLink="./types" *ngIf="hasWritePermission('Types')"><i class="fa-solid fa-file"></i> Create Types</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="navbar-nav me-auto">
+        <li class="nav item dropdown"*ngIf="hasReadPermission('Models')">
+          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"> 
+        Models
+          </a> 
+          <ul class="dropdown-menu dropdown-menu-dark">
+            <li><a class="dropdown-item"class="dropdown-item" routerLink="./models"*ngIf="hasWritePermission('Models')"><i class="fa-solid fa-circle-down"></i> Create Models</a></li>
             <li><a class="dropdown-item"class="dropdown-item" routerLink="./showmodels"*ngIf="hasReadPermission('Models')"> <i class="fa-solid fa-circle-info"></i> Show Models</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="navbar-nav me-auto">
+        <li class="nav item dropdown"*ngIf="hasReadPermission('Supplier')">
+          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"> 
+        Suppliers
+          </a> 
+          <ul class="dropdown-menu dropdown-menu-dark">
+            <li><a class="dropdown-item"class="dropdown-item" routerLink="./supplier"*ngIf="hasWritePermission('Supplier')"><i class="fa-solid fa-users"></i> Create Supplier</a></li>
             <li><a class="dropdown-item"class="dropdown-item" routerLink="./supplierlist"*ngIf="hasReadPermission('Supplier')"><i class="fa-solid fa-user-check"></i> Supplier list </a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="navbar-nav me-auto">
+        <li class="nav item dropdown"*ngIf="hasReadPermission('Activity')">
+          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"> 
+        Activity
+          </a> 
+          <ul class="dropdown-menu dropdown-menu-dark">
+            <li><a class="dropdown-item"class="dropdown-item" routerLink="./requestlist" *ngIf="hasReadPermission('Request')"> <i class="fas fa-file-signature"></i> Request List </a></li>
             <li><a class="dropdown-item"class="dropdown-item" routerLink="./activitylog"*ngIf="hasReadPermission('Activity')"><i class="fa-solid fa-chart-line"></i> Activity Log </a></li>
           </ul>
+        </li>
+      </ul>
+      <ul class="navbar-nav me-auto">
+        <li class="nav item dropdown"*ngIf="hasReadPermission('Asset')">
+          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"> 
+        Asset
+          </a> 
+          <ul class="dropdown-menu dropdown-menu-dark">
+            <li><a class="dropdown-item"class="dropdown-item" *ngIf="hasReadPermission('Asset')" routerLink="./authasset"><i class="fa-solid fa-pen-to-square"></i> Show Asset</a></li>
+         </ul>
         </li>
       </ul>
       </ul>
@@ -35,8 +82,8 @@
             <span class="badge badge-pill badge-danger" > {{ unreadCount }}</span>
           </a> 
           <ul class="dropdown-menu dropdown-menu-dark">
-            <li class="let" *ngFor="let user of notification">
-              <a class="dropdown-item">{{ user.data }} <i class="fa-sharp fa-solid fa-check" *ngIf="!user.read_at"(click)="markAsread(user.id)" ></i></a>
+            <li class="let" *ngFor="let user of notification" (click)="onNotificationClick(user.type)">
+              <a class="dropdown-item">{{ user.data }} <i class="fa-sharp fa-solid fa-check" (click)="markAsread(user.id)" ></i></a>
               <li class="dropdown-menu-center">
                 <a class="dropdown-item view-all" routerLink="./notification">View All</a>
               </li>

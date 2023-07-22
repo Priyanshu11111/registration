@@ -8,10 +8,9 @@
           </a> 
           <ul class="dropdown-menu dropdown-menu-dark">
             <li><a class="dropdown-item" routerLink="./addemployee"><i class="fa-sharp fa-regular fa-plus"></i> Add Employee</a></li> 
-            <li><a class="dropdown-item"class="dropdown-item" routerLink="../types"><i class="fa-solid fa-file"></i> Create Types</a></li>
-            <li><a class="dropdown-item"class="dropdown-item" routerLink="../supplier"><i class="fa-solid fa-users"></i> Create Supplier</a></li>
             <li><a class="dropdown-item"class="dropdown-item" routerLink="../roles"><i class="fa-solid fa-person"></i>  Roles</a></li>
-            <li><a class="dropdown-item"class="dropdown-item" routerLink="../models"><i class="fa-solid fa-circle-down"></i> Create Models</a></li>
+            <li><a class="dropdown-item"class="dropdown-item" routerLink="../permission"><i class="fa-solid fa-pen-to-square"></i> Roles And Permission</a></li>
+            <li><a class="dropdown-item"class="dropdown-item" routerLink="../createasset"><i class="fa-solid fa-pen-to-square"></i> Create Asset</a></li>
           </ul>
         </li>
       <ul class="navbar-nav me-auto">
@@ -22,12 +21,43 @@
           <ul class="dropdown-menu dropdown-menu-dark">
             <li><a class="dropdown-item" routerLink="./admindashbord"><i class="fa-solid fa-address-book"></i> Show Employee</a></li>
             <li><a class="dropdown-item"class="dropdown-item" routerLink="../usersdashboard"><i class="fa-solid fa-bars-staggered"></i> Switch To Userdashbord</a></li>
-            <li><a class="dropdown-item"class="dropdown-item" routerLink="../typeslist"><i class="fa-solid fa-list-ul"></i> Types List </a></li>
-            <li><a class="dropdown-item"class="dropdown-item" routerLink="../showmodels"> <i class="fa-solid fa-circle-info"></i> Show Models</a></li>
             <li><a class="dropdown-item"class="dropdown-item" routerLink="../request"> <i class="fas fa-file-signature"></i> Request List</a></li>
-            <li><a class="dropdown-item"class="dropdown-item" routerLink="../supplierlist"><i class="fa-solid fa-user-check"></i> Supplier list </a></li>
             <li><a class="dropdown-item"class="dropdown-item" routerLink="../activitylog"><i class="fa-solid fa-chart-line"></i> Activity Log </a></li>
-            <li><a class="dropdown-item"class="dropdown-item" routerLink="../permission"><i class="fa-solid fa-pen-to-square"></i> Roles And Permission</a></li>
+            <li><a class="dropdown-item"class="dropdown-item" routerLink="../showpermissions"><i class="fa-solid fa-pen-to-square"></i> Show Roles And Permission</a></li>
+            <li><a class="dropdown-item"class="dropdown-item" routerLink="../showasset"><i class="fa-solid fa-pen-to-square"></i> Show Asset</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="navbar-nav me-auto">
+        <li class="nav item dropdown">
+          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"><i class="fa-solid fa-mobile"></i>
+          Type
+          </a> 
+          <ul class="dropdown-menu dropdown-menu-dark">
+            <li><a class="dropdown-item"class="dropdown-item" routerLink="../types"><i class="fa-solid fa-file"></i> Create Types</a></li>
+            <li><a class="dropdown-item"class="dropdown-item" routerLink="../typeslist"><i class="fa-solid fa-list-ul"></i> Types List </a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="navbar-nav me-auto">
+        <li class="nav item dropdown">
+          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"><i class="fa-solid fa-laptop"></i>
+          Models
+          </a> 
+          <ul class="dropdown-menu dropdown-menu-dark">
+            <li><a class="dropdown-item"class="dropdown-item" routerLink="../models"><i class="fa-solid fa-circle-down"></i> Create Models</a></li>
+            <li><a class="dropdown-item"class="dropdown-item" routerLink="../showmodels"> <i class="fa-solid fa-circle-info"></i> Show Models</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="navbar-nav me-auto">
+        <li class="nav item dropdown">
+          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"><i class="fa-solid fa-user-tie"></i>
+          Suppliers
+          </a> 
+          <ul class="dropdown-menu dropdown-menu-dark">
+            <li><a class="dropdown-item"class="dropdown-item" routerLink="../supplier"><i class="fa-solid fa-users"></i> Create Supplier</a></li>
+            <li><a class="dropdown-item"class="dropdown-item" routerLink="../supplierlist"><i class="fa-solid fa-user-check"></i> Supplier list </a></li>
           </ul>
         </li>
       </ul>

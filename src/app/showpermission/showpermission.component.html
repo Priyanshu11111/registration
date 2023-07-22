@@ -1,0 +1,32 @@
+<div class="content-controls">
+</div>
+<div class="table-wrapper">
+    <table class="fl-table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Module</th>
+            <th>Role</th>
+            <th>Read</th>
+            <th>Write</th>
+            <th>Created_at</th>
+            <th>Updated_at</th>
+            <th>Action</th>
+        </tr>   
+        <tr *ngFor="let user of showpermission">
+            <td scope="row" >{{ user.id }}</td>
+            <td>{{ user.name}}</td>
+            <td>{{ user.module }}</td>
+            <td>{{ user.roles.name}}</td>
+            <td>{{ user.read == '1' ? 'Yes' : user.read =='0' ? 'No' : 'Pending'}}</td>
+            <td>{{ user.write == '1' ? 'Yes' : user.write =='0' ? 'No' : 'Pending'}}</td>
+            <td>{{ user.created_at|date:'yyyy-MM-dd HH:mm:ss'}}</td>
+            <td>{{ user.updated_at|date:'yyyy-MM-dd HH:mm:ss'}}</td>
+            <button (click)="deletepermission(user.id)">Delete</button>
+        </thead>
+        <tbody>
+        <tbody>
+        </table>
+<!--           <pagination-controls (pageChange)="a=$event" class=""></pagination-controls>
+ -->          </div>

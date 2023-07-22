@@ -1,0 +1,23 @@
+<div class="form-style-2">
+    <div class="form-style-2-heading">Create Asset</div>
+    <form [formGroup]="assetForm" (ngSubmit)="submitasset()">
+      <label for="name"><span>Name <span class="required">*</span></span><input type="text" class="input-field" name="name" value="" formControlName="name" /></label>
+      <label for="model"><span>Models <span class="required">*</span></span></label>
+      <select class="select-field" name="model" formControlName="model">
+        <option value="selected"  selected >Select a model</option>
+      <option *ngFor="let model of model" [value]="model.id">{{ model.name }}</option>
+     </select>      
+ <label for="model"><span>Owner Name <span class="required">*</span></span></label>
+ <select class="select-field" name="model" formControlName="ownername">
+   <option value="selected"  selected >Select a model</option>
+     <option *ngFor="let users of customers"[value]="users.id" >{{ users.firstname }}</option>
+  </select>
+  <label for="model"><span>Status<span class="required">*</span></span></label>
+  <select class="select-field" name="model" formControlName="status">
+    <option value="selected"  selected >Select Status</option>
+    <option value="Active"  selected >Active</option>
+    <option value="Deactive"  selected >Deactive</option>
+   </select>
+      <label><span> </span><input type="submit" [disabled]="assetForm.invalid" value="Submit"/></label>
+    </form>
+  </div>

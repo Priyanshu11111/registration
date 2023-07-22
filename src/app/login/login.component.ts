@@ -39,7 +39,6 @@ onSubmit(){
       if (response.token) {
         localStorage.setItem('token', response.token);
         localStorage.setItem('permissions',JSON.stringify(response.permissions));
-        console.log(JSON.stringify(response.permissions))
         if (credentials.email === 'superadmin@gmail.com') {
           this.api.setUserRole('1');
           this.router.navigate(['admin/admindashbord']);

@@ -19,6 +19,9 @@ import { ShowrequestsComponent } from 'src/app/showrequests/showrequests.compone
 import { ViewmodelsComponent } from 'src/app/viewmodels/viewmodels.component';
 import { PermissionComponent } from 'src/app/permission/permission.component';
 import { RolesComponent } from 'src/app/roles/roles.component';
+import { AssetComponent } from 'src/app/asset/asset.component';
+import { ShowpermissionComponent } from 'src/app/showpermission/showpermission.component';
+import { ShowassetComponent } from 'src/app/showasset/showasset.component';
 const routes: Routes = [{
   path:'',component:NavbarComponent,
   children:[
@@ -39,6 +42,10 @@ const routes: Routes = [{
     {path:'modelsview/:id',component:ViewmodelsComponent},
     {path:'permission', component:PermissionComponent},
     {path:'roles',component:RolesComponent},
+    {path:'createasset',component:AssetComponent},
+    {path:'createasset/edit/:id',component:AssetComponent},
+    {path:'showasset',component:ShowassetComponent},
+    {path:'showpermissions',component:ShowpermissionComponent},
     {path:'showrequests/:id',component:ShowrequestsComponent,canActivate:[AuthGuard],data:{roles: ['1']}},
     {path:'request',component:ShowallnotificationComponent,canActivate:[AuthGuard],data:{roles: ['1']}},
     {path:'supplier/edit/:id',component:SupplierComponent,canActivate:[AuthGuard],data:{roles: ['1']}},

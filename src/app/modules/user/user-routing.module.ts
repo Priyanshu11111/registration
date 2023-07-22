@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ActivitylogComponent } from 'src/app/activitylog/activitylog.component';
+import { AuthassetComponent } from 'src/app/authasset/authasset.component';
 import { AuthGuard } from 'src/app/guards/auth.guard';
 import { ModelsComponent } from 'src/app/models/models.component';
 import { NotificationComponent } from 'src/app/notification/notification.component';
 import { ProfileComponent } from 'src/app/profile/profile.component';
 import { RequestComponent } from 'src/app/request/request.component';
 import { RequestlistComponent } from 'src/app/requestlist/requestlist.component';
+import { ShowassetComponent } from 'src/app/showasset/showasset.component';
 import { ShowmodelsComponent } from 'src/app/showmodels/showmodels.component';
 import { ShowrequestsComponent } from 'src/app/showrequests/showrequests.component';
 import { SupplierComponent } from 'src/app/supplier/supplier.component';
@@ -36,6 +38,7 @@ const routes: Routes = [
     {path:'showrequests/:id',component:ShowrequestsComponent,canActivate:[AuthGuard],data:{roles: ['2']}},
     {path:'supplier/edit/:id',component:SupplierComponent,canActivate:[AuthGuard],data:{roles: ['2']}},
     {path:'notification',component:NotificationComponent},
+    {path:'authasset',component:AuthassetComponent},
     {path:'modelsview/:id',component:ViewmodelsComponent},
     {path: '',redirectTo:'/users',pathMatch: 'full'},
   ],

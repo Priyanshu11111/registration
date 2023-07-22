@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RegistrationService } from '../registration.service';
+import { ActivatedRoute, Router } from'@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -8,7 +9,7 @@ import { RegistrationService } from '../registration.service';
 })
 export class UserComponent {
   
-  constructor(private api:RegistrationService){}
+  constructor(private api:RegistrationService,private router:Router){}
   notification: any;
   unread:any;
   unreadCount:number=0;
@@ -18,8 +19,25 @@ export class UserComponent {
       this.notification = data.notifications;
       this.unreadCount = data.unread_count;
   });
-  
   }
+  onNotificationClick(type:any) {
+    if (type == "App\\\Notifications\\\RequestAcceptedNotification") {
+      this.router.navigate(['users/requestlist']);
+    } 
+    else if(type == "App\\\Notifications\\\RequestDeclinedNotification"){
+      this.router.navigate(['users/requestlist']);
+    }
+    else if(type == "App\\\Notifications\\\ModelsNotification"){
+      this.router.navigate(['users/showmodels']);
+    }
+    else if(type =="App\\\Notifications\\\TypesNotification"){
+      this.router.navigate(['users/typeslist']);
+    }
+    else if(type =="App\\\Notifications\\\SuppliersNotification"){
+      this.router.navigate(['users/supplierlist']);
+    }
+    }
+    
 
   hasReadPermission(moduleName: string): boolean {
     const permissionsStr = localStorage.getItem('permissions');
